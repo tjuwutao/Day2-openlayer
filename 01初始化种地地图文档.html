@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 导入ol依赖 -->
+    <!-- 原生的ol+mapgis的接口 -->
+    <script src="./OL_SDK/include-openlayers-local.js"></script>
+</head>
+<body>
+    <!-- 2.设置地图容器的挂载点 -->
+    <div id="map"></div>
+    <script>
+        // 3.调用中地接口获取地图文档
+        var docLayer=new Zoody.Map.Doc('',"area_2",{
+            ip:"localhost",
+            port:6163,
+        })
+        // 实例化地图
+        const map=new ol.Map({
+            /* vue2:el
+                vue3:$mount
+                将实例化的地图挂载到dom元素上
+            */
+           target:"map",
+        //    相当于vue中的data
+           layers:[doclayer],
+        //    view设置视图中心店，放大缩小级别，坐标
+            view:new ol.View({
+                center:[114.30,30.50],
+                zoom:1,
+                // epsg4326==wgs84
+                projection:"EPSG:4326"
+            })
+        })
+    </script>
+</body>
+</html>
